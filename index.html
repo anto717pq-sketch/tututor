@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TuTutor | Aprende a tu ritmo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #faf8ff;
+      color: #29213d;
+    }
+    header {
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      border-bottom: 1px solid #eee7fa;
+    }
+    .logo { font-size: 25px; font-weight: 800; color: #7546c8; }
+    .hero {
+      text-align: center;
+      padding: 65px 20px 45px;
+      background: linear-gradient(135deg, #f0e7ff, #fff4fa);
+    }
+    h1 { font-size: clamp(32px, 5vw, 48px); margin: 0 0 15px; }
+    .hero p { color: #675c78; font-size: 17px; }
+    input {
+      width: min(100%, 440px);
+      padding: 15px;
+      border: 1px solid #d8c9f1;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-top: 18px;
+    }
+    main { max-width: 1050px; margin: auto; padding: 35px 20px; }
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 17px;
+    }
+    .course {
+      padding: 23px;
+      background: white;
+      border: 1px solid #eee7fa;
+      border-radius: 17px;
+      box-shadow: 0 5px 20px #35205008;
+    }
+    .emoji { font-size: 32px; }
+    .course p { color: #746b80; line-height: 1.5; }
+    .premium {
+      margin-top: 40px;
+      padding: 30px;
+      border-radius: 20px;
+      background: #34234f;
+      color: white;
+      text-align: center;
+    }
+    .premium p { color: #e3d9f3; line-height: 1.6; }
+    .price { font-size: 32px; font-weight: bold; }
+    button {
+      background: #a985f2;
+      color: #24163b;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    footer { text-align: center; padding: 25px; color: #786d86; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">✦ TuTutor</div>
+    <span>Tu espacio de estudio 💜</span>
+  </header>
+
+  <section class="hero">
+    <h1>Aprende a tu ritmo ✨</h1>
+    <p>Recursos, ejercicios y herramientas para estudiar mejor.</p>
+    <input id="search" type="search"
+      placeholder="Busca un curso..."
+      aria-label="Buscar cursos">
+  </section>
+
+  <main>
+    <h2>Explora tus cursos 📚</h2>
+    <div class="courses" id="courses">
+      <article class="course" data-name="matemáticas">
+        <div class="emoji">📐</div>
+        <h3>Matemáticas</h3>
+        <p>Practica operaciones, álgebra y geometría.</p>
+      </article>
+      <article class="course" data-name="inglés">
+        <div class="emoji">🇬🇧</div>
+        <h3>Inglés</h3>
+        <p>Repasa gramática y aprende vocabulario.</p>
+      </article>
+      <article class="course" data-name="comunicación">
+        <div class="emoji">✍️</div>
+        <h3>Comunicación</h3>
+        <p>Mejora tu escritura y comprensión lectora.</p>
+      </article>
+      <article class="course" data-name="ciencia y tecnología">
+        <div class="emoji">🔬</div>
+        <h3>Ciencia y Tecnología</h3>
+        <p>Descubre conceptos científicos.</p>
+      </article>
+      <article class="course" data-name="historia">
+        <div class="emoji">🏛️</div>
+        <h3>Historia</h3>
+        <p>Estudia civilizaciones y acontecimientos.</p>
+      </article>
+      <article class="course" data-name="geografía">
+        <div class="emoji">🌎</div>
+        <h3>Geografía</h3>
+        <p>Explora el Perú y el mundo.</p>
+      </article>
+    </div>
+
+    <section class="premium">
+      <h2>TuTutor Premium 👑</h2>
+      <p>Accede a colecciones especiales de ejercicios,
+        fichas de estudio y materiales adicionales.</p>
+      <div class="price">S/ 9.90 <small>/ mes</small></div>
+      <p>Próximamente: suscripción y acceso exclusivo.</p>
+      <button id="premiumButton">Conocer Premium</button>
+    </section>
+  </main>
+
+  <footer>TuTutor © 2026 · Aprende, practica y crece 💜</footer>
+
+  <script>
+    const search = document.getElementById("search");
+    const cards = document.querySelectorAll(".course");
+
+    search.addEventListener("input", () => {
+      const term = search.value.toLowerCase().trim();
+      cards.forEach(card => {
+        card.classList.toggle(
+          "hidden",
+          !card.dataset.name.includes(term)
+        );
+      });
+    });
+
+    document.getElementById("premiumButton").addEventListener("click", () => {
+      alert("¡Gracias por tu interés! Las suscripciones estarán disponibles próximamente.");
+    });
+  </script>
+</body>
+</html>
